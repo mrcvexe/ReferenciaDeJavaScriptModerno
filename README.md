@@ -89,9 +89,7 @@ Cuando tengas dificultades para comprender un concepto, te sugiero que busques r
         * [Importación / exportación por defecto](#importación--exportación-por-defecto)
       - [Recursos externos](#recursos-externos-5)
     + [JavaScript *this*](#-javascript-this)
-      - [Recursos externos](#recursos-
-
-externos-6)
+      - [Recursos externos](#recursos-externos-6)
     + [Clases](#clases)
       - [Ejemplos](#ejemplos)
       - [Recursos externos](#recursos-externos-7)
