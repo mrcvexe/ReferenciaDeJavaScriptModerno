@@ -1,317 +1,314 @@
-# Modern JavaScript Cheatsheet
+# Cheatsheet de JavaScript Moderno
 
-![Modern JavaScript cheatsheet](https://i.imgur.com/aexPxMb.png)
-<sub>Image Credits: [Ahmad Awais ⚡️](https://github.com/ahmadawais)</sub>
+![Cheatsheet de JavaScript moderno](https://i.imgur.com/aexPxMb.png)
+<sub>Créditos de la imagen: [Ahmad Awais ⚡️](https://github.com/ahmadawais)</sub>
 
-> If you like this content, you can ping me or follow me on Twitter :+1:
+## Introducción
 
-[![Tweet for help](https://img.shields.io/twitter/follow/mbeaudru?label=Tweet%20%40mbeaudru&style=social)](https://twitter.com/mbeaudru/)
+### Motivación
 
-## Introduction
+Este documento es una hoja de referencia para JavaScript que encontrarás con frecuencia en proyectos modernos y en la mayoría de los códigos de muestra contemporáneos.
 
-### Motivation
+Esta guía no tiene la intención de enseñarte JavaScript desde cero, sino de ayudar a los desarrolladores con conocimientos básicos que pueden tener dificultades para familiarizarse con bases de código modernas (o digamos para aprender React, por ejemplo) debido a los conceptos de JavaScript utilizados.
 
-This document is a cheatsheet for JavaScript you will frequently encounter in modern projects and most contemporary sample code.
+Además, a veces proporcionaré consejos personales que pueden ser discutibles, pero me aseguraré de mencionar que es una recomendación personal cuando lo haga.
 
-This guide is not intended to teach you JavaScript from the ground up, but to help developers with basic knowledge who may struggle to get familiar with modern codebases (or let's say to learn React for instance) because of the JavaScript concepts used.
+> **Nota:** La mayoría de los conceptos presentados aquí provienen de una actualización del lenguaje JavaScript (ES2015, a menudo llamada ES6). Puedes encontrar las nuevas características agregadas por esta actualización [aquí](http://es6-features.org); está muy bien hecho.
 
-Besides, I will sometimes provide personal tips that may be debatable but will take care to mention that it's a personal recommendation when I do so.
+### Recursos Complementarios
 
-> **Note:** Most of the concepts introduced here are coming from a JavaScript language update (ES2015, often called ES6). You can find new features added by this update [here](http://es6-features.org); it's very well done.
+Cuando tengas dificultades para comprender un concepto, te sugiero que busques respuestas en los siguientes recursos:
 
-### Complementary Resources
-
-When you struggle to understand a notion, I suggest you look for answers on the following resources:
-
-- [MDN (Mozilla Developer Network)](https://developer.mozilla.org/en-US/search?q=)
-- [You don't know JS (book)](https://github.com/getify/You-Dont-Know-JS)
-- [Eloquent JavaScript (book)](https://eloquentjavascript.net)
-- [Douglas Crockford's blog](https://www.crockford.com/javascript/)
-- [ES6 Features with examples](http://es6-features.org)
-- [Wes Bos blog (ES6)](https://wesbos.com/javascript)
-- [Javascript Basics for Beginners](https://www.udacity.com/course/javascript-basics--ud804) - a free Udacity course
+- [MDN (Mozilla Developer Network)](https://developer.mozilla.org/es/docs/Web/JavaScript)
+- [You don't know JS (libro)](https://github.com/getify/You-Dont-Know-JS)
+- [Eloquent JavaScript (libro)](https://eloquentjavascript.net)
+- [Blog de Douglas Crockford](https://www.crockford.com/javascript/)
+- [Características de ES6 con ejemplos](http://es6-features.org)
+- [Blog de Wes Bos (ES6)](https://wesbos.com/javascript)
+- [JavaScript Basics para Principiantes](https://www.udacity.com/course/javascript-basics--ud804) - un curso gratuito de Udacity
 - [Reddit (JavaScript)](https://www.reddit.com/r/javascript/)
-- [Google](https://www.google.com/) to find specific blog and resources
+- [Google](https://www.google.com/) para encontrar blogs y recursos específicos
 - [StackOverflow](https://stackoverflow.com/questions/tagged/javascript)
 
-## Table of Contents
+## Tabla de Contenidos
 
-- [Modern JavaScript cheatsheet](#modern-javascript-cheatsheet)
-  * [Introduction](#introduction)
-    + [Motivation](#motivation)
-    + [Complementary resources](#complementary-resources)
-  * [Table of contents](#table-of-contents)
-  * [Notions](#notions)
-    + [Variable declaration: var, const, let](#variable-declaration-var-const-let)
-      - [Short explanation](#short-explanation)
-      - [Sample code](#sample-code)
-      - [Detailed explanation](#detailed-explanation)
-      - [External resource](#external-resource)
-    + [Arrow function](#-arrow-function)
-      - [Sample code](#sample-code-1)
-      - [Detailed explanation](#detailed-explanation-1)
-        * [Concision](#concision)
-        * [*this* reference](#this-reference)
-      - [Useful resources](#useful-resources)
-    + [Function default parameter value](#function-default-parameter-value)
-      - [External resource](#external-resource-1)
-    + [Destructuring objects and arrays](#destructuring-objects-and-arrays)
-      - [Explanation with sample code](#explanation-with-sample-code)
-      - [Useful resources](#useful-resources-1)
-    + [Array methods - map / filter / reduce](#array-methods---map--filter--reduce--find)
-      - [Sample code](#sample-code-2)
-      - [Explanation](#explanation)
+- [Cheatsheet de JavaScript moderno](#cheatsheet-de-javascript-moderno)
+  * [Introducción](#introducción)
+    + [Motivación](#motivación)
+    + [Recursos complementarios](#recursos-complementarios)
+  * [Tabla de contenidos](#tabla-de-contenidos)
+  * [Conceptos](#conceptos)
+    + [Declaración de variables: var, const, let](#declaración-de-variables-var-const-let)
+      - [Explicación breve](#explicación-breve)
+      - [Código de ejemplo](#código-de-ejemplo)
+      - [Explicación detallada](#explicación-detallada)
+      - [Recurso externo](#recurso-externo)
+    + [Función flecha](#-función-flecha)
+      - [Código de ejemplo](#código-de-ejemplo-1)
+      - [Explicación detallada](#explicación-detallada-1)
+        * [Concisión](#concisión)
+        * [Referencia a *this*](#referencia-a-this)
+      - [Recursos útiles](#recursos-útiles)
+    + [Valor predeterminado en parámetros de función](#valor-predeterminado-en-parámetros-de-función)
+      - [Recurso externo](#recurso-externo-1)
+    + [Desestructuración de objetos y matrices](#desestructuración-de-objetos-y-matrices)
+      - [Explicación con código de ejemplo](#explicación-con-código-de-ejemplo)
+      - [Recursos útiles](#recursos-útiles-1)
+    + [Métodos de matrices - map / filter / reduce](#métodos-de-matrices---map--filter--reduce--find)
+      - [Código de ejemplo](#código-de-ejemplo-2)
+      - [Explicación](#explicación)
         * [Array.prototype.map()](#arrayprototypemap)
         * [Array.prototype.filter()](#arrayprototypefilter)
         * [Array.prototype.reduce()](#arrayprototypereduce)
         * [Array.prototype.find()](#arrayprototypefind)
-      - [External Resource](#external-resource-2)
-    + [Spread operator "..."](#spread-operator-)
-      - [Sample code](#sample-code-3)
-      - [Explanation](#explanation-1)
-        * [In iterables (like arrays)](#in-iterables-like-arrays)
-        * [Function rest parameter](#function-rest-parameter)
-        * [Object properties spreading](#object-properties-spreading)
-      - [External resources](#external-resources)
-    + [Object property shorthand](#object-property-shorthand)
-      - [Explanation](#explanation-2)
-      - [External resources](#external-resources-1)
-    + [Promises](#promises)
-      - [Sample code](#sample-code-4)
-      - [Explanation](#explanation-3)
-        * [Create the promise](#create-the-promise)
-        * [Promise handlers usage](#promise-handlers-usage)
-      - [External Resources](#external-resources-2)
-    + [Template literals](#template-literals)
-      - [Sample code](#sample-code-5)
-      - [External resources](#external-resources-3)
-    + [Tagged Template Literals](#tagged-template-literals)
-      - [External resources](#external-resources-4)
-    + [Imports / Exports](#imports--exports)
-      - [Explanation with sample code](#explanation-with-sample-code-1)
-        * [Named exports](#named-exports)
-        * [Default import / export](#default-import--export)
-      - [External resources](#external-resources-5)
+      - [Recurso externo](#recurso-externo-2)
+    + [Operador de propagación "..."](#operador-de-propagación-)
+      - [Código de ejemplo](#código-de-ejemplo-3)
+      - [Explicación](#explicación-1)
+        * [En objetos iterables (como arrays)](#en-objetos-iterables-como-arrays)
+        * [Parámetro rest de función](#parámetro-rest-de-función)
+        * [Propagación de propiedades de objetos](#propagación-de-propiedades-de-objetos)
+      - [Recursos externos](#recursos-externos)
+    + [Atajo de propiedad de objeto](#atajo-de-propiedad-de-objeto)
+      - [Explicación](#explicación-2)
+      - [Recursos externos](#recursos-externos-1)
+    + [Promesas](#promesas)
+      - [Código de ejemplo](#código-de-ejemplo-4)
+      - [Explicación](#explicación-3)
+        * [Crear la promesa](#crear-la-promesa)
+        * [Uso de controladores de promesas](#uso-de-controladores-de-promesas)
+      - [Recursos externos](#recursos-externos-2)
+    + [Plantillas literales](#plantillas-literales)
+      - [Código de ejemplo](#código-de-ejemplo-5)
+      - [Recursos externos](#recursos-externos-3)
+    + [Plantillas literales etiquetadas](#plantillas-literales-etiquetadas)
+      - [Recursos externos](#recursos-externos-4)
+    + [Importaciones / Exportaciones](#importaciones--exportaciones)
+      - [Explicación con código de ejemplo](#explicación-con-código-de-ejemplo-1)
+        * [Exportaciones nombradas](#exportaciones-nombradas)
+        * [Importación / exportación por defecto](#importación--exportación-por-defecto)
+      - [Recursos externos](#recursos-externos-5)
     + [JavaScript *this*](#-javascript-this)
-      - [External resources](#external-resources-6)
-    + [Class](#class)
-      - [Samples](#samples)
-      - [External resources](#external-resources-7)
-    + [Extends and super keywords](#extends-and-super-keywords)
-      - [Sample Code](#sample-code-6)
-      - [External Resources](#external-resources-8)
+      - [Recursos externos](#recursos-
+
+externos-6)
+    + [Clases](#clases)
+      - [Ejemplos](#ejemplos)
+      - [Recursos externos](#recursos-externos-7)
+    + [Palabras clave Extends y Super](#extends-y-super-keywords)
+      - [Código de ejemplo](#código-de-ejemplo-6)
+      - [Recursos externos](#recursos-externos-8)
     + [Async Await](#async-await)
-      - [Sample code](#sample-code-7)
-      - [Explanation with sample code](#explanation-with-sample-code-2)
-      - [Error handling](#error-handling)
-      - [External resources](#external-resources-9)
-    + [Truthy / Falsy](#truthy--falsy)
-      - [External resources](#external-resources-10)
-    + [Anamorphisms / Catamporphisms](#anamorphisms-and-catamorphisms)
-      - [Anamorphisms](#anamorphisms)
-      - [Catamorphisms](#catamorphisms)
-      - [External resources](#external-resources-11)
-    + [Generators](#generators)
-      - [External resources](#external-resources-12)
-    + [Static Methods](#static-methods)
-      - [Short Explanation](#short-explanation-1)
-      - [Sample Code](#sample-code-8)
-      - [Detailed Explanation](#detailed-explanation-2)
-        * [Calling other static methods from a static method](#calling-other-static-methods-from-a-static-method)
-        * [Calling static methods from non-static methods](#calling-static-methods-from-non-static-methods)
-      - [External resources](#external-resources-13)
-  * [Glossary](#glossary)
-    + [Scope](#-scope)
-    + [Variable mutation](#-variable-mutation)
+      - [Código de ejemplo](#código-de-ejemplo-7)
+      - [Explicación con código de ejemplo](#explicación-con-código-de-ejemplo-2)
+      - [Manejo de errores](#manejo-de-errores)
+      - [Recursos externos](#recursos-externos-9)
+    + [Valores Verdaderos / Falsos](#valores-verdaderos--falsos)
+      - [Recursos externos](#recursos-externos-10)
+    + [Anamorfismos / Catamorfismos](#anamorfismos-y-catamorfismos)
+      - [Anamorfismos](#anamorfismos)
+      - [Catamorfismos](#catamorfismos)
+      - [Recursos externos](#recursos-externos-11)
+    + [Generadores](#generadores)
+      - [Recursos externos](#recursos-externos-12)
+    + [Métodos Estáticos](#métodos-estáticos)
+      - [Explicación breve](#explicación-breve-1)
+      - [Código de ejemplo](#código-de-ejemplo-8)
+      - [Explicación detallada](#explicación-detallada-2)
+        * [Llamada a otros métodos estáticos desde un método estático](#llamada-a-otros-métodos-estáticos-desde-un-método-estático)
+        * [Llamada a métodos estáticos desde métodos no estáticos](#llamada-a-métodos-estáticos-desde-métodos-no-estáticos)
+      - [Recursos externos](#recursos-externos-13)
+  * [Glosario](#glosario)
+    + [Ámbito](#-ámbito)
+    + [Mutación de variables](#-mutación-de-variables)
 
-## Notions
+## Conceptos
 
-### Variable declaration: var, const, let
+### Declaración de Variables: var, const, let
 
-In JavaScript, there are three keywords available to declare a variable, and each has its differences. Those are ```var```, ```let``` and ```const```.
+En JavaScript, existen tres palabras clave disponibles para declarar una variable, y cada una tiene sus diferencias. Estas son ```var```, ```let``` y ```const```.
 
-#### Short explanation
+#### Explicación breve
 
-Variables declared with ```const``` keyword can't be reassigned, while ```let``` and ```var``` can.
+Las variables declaradas con la palabra clave ```const``` no pueden ser reasignadas, mientras que ```let``` y ```var``` sí pueden.
 
-I recommend always declaring your variables with ```const``` by default, but with ```let``` if it is a variable that you need to *mutate* or reassign later.
+Recomiendo declarar siempre tus variables con ```const``` por defecto, pero usar ```let``` si es una variable que necesitas *mutar* o reasignar más adelante.
 
 <table>
   <tr>
     <th></th>
-    <th>Scope</th>
-    <th>Reassignable</th>
-    <th>Mutable</th>
-   <th><a href="#tdz_sample">Temporal Dead Zone</a></th>
+    <th>Ámbito</th>
+    <th>Reasignable</th>
+    <th>Mutabilidad</th>
+   <th><a href="#tdz_sample">Zona Temporal Muerta</a></th>
   </tr>
   <tr>
     <th>const</th>
-    <td>Block</td>
+    <td>Bloque</td>
     <td>No</td>
-    <td><a href="#const_mutable_sample">Yes</a></td>
-    <td>Yes</td>
+    <td><a href="#const_mutable_sample">Sí</a></td>
+    <td>Sí</td>
   </tr>
   <tr>
     <th>let</th>
-    <td>Block</td>
-    <td>Yes</td>
-    <td>Yes</td>
-    <td>Yes</td>
+    <td>Bloque</td>
+    <td>Sí</td>
+    <td>Sí</td>
+    <td>Sí</td>
   </tr>
    <tr>
     <th>var</th>
-    <td>Function</td>
-    <td>Yes</td>
-    <td>Yes</td>
+    <td>Función</td>
+    <td>Sí</td>
+    <td>Sí</td>
     <td>No</td>
   </tr>
 </table>
 
-#### Sample code
+#### Código de ejemplo
 
 ```javascript
-const person = "Nick";
-person = "John" // Will raise an error, person can't be reassigned
+const persona = "Nick";
+persona = "John" // Generará un error, no se puede reasignar persona
 ```
 
 ```javascript
-let person = "Nick";
-person = "John";
-console.log(person) // "John", reassignment is allowed with let
+let persona = "Nick";
+persona = "John";
+console.log(persona) // "John", se permite la reasignación con let
 ```
 
-#### Detailed explanation
+#### Explicación detallada
 
-The [*scope*](#scope_def) of a variable roughly means "where is this variable available in the code".
+El [*ámbito*](#ámbito_def) de una variable se refiere aproximadamente a "dónde está disponible esta variable en el código".
 
 ##### var
 
-```var``` declared variables are *function scoped*, meaning that when a variable is created in a function, everything in that function can access that variable. Besides, a *function scoped* variable created in a function can't be accessed outside this function.
+Las variables declaradas con ```var``` tienen un ámbito de *ámbito de función*, lo que significa que cuando se crea una variable en una función, todo en esa función puede acceder a esa variable. Además, una variable con ámbito de función creada en una función no puede ser accedida fuera de esta función.
 
-I recommend you to picture it as if an *X scoped* variable meant that this variable was a property of X.
+Te recomiendo imaginarlo como si una variable con ámbito *X* significara que esta variable era una propiedad de *X*.
 
 ```javascript
-function myFunction() {
-  var myVar = "Nick";
-  console.log(myVar); // "Nick" - myVar is accessible inside the function
+function miFuncion() {
+  var miVar = "Nick";
+  console.log(miVar); // "Nick" - miVar es accesible dentro de la función
 }
-console.log(myVar); // Throws a ReferenceError, myVar is not accessible outside the function.
+console.log(miVar); // Genera un ReferenceError, miVar no es accesible fuera de la función.
 ```
 
-Still focusing on the variable scope, here is a more subtle example:
+Centrándonos en el ámbito de la variable, aquí tienes un ejemplo más sutil:
 
 ```javascript
-function myFunction() {
-  var myVar = "Nick";
+function miFuncion() {
+  var miVar = "Nick";
   if (true) {
-    var myVar = "John";
-    console.log(myVar); // "John"
-    // actually, myVar being function scoped, we just erased the previous myVar value "Nick" for "John"
+    var miVar = "John";
+    console.log(miVar); // "John"
+    // en realidad, como miVar tiene ámbito de función, simplemente sobreescribimos el valor anterior de miVar "Nick" por "John"
   }
-  console.log(myVar); // "John" - see how the instructions in the if block affected this value
+  console.log(miVar); // "John" - observa cómo las instrucciones en el bloque if afectaron a este valor
 }
-console.log(myVar); // Throws a ReferenceError, myVar is not accessible outside the function.
+console.log(miVar); // Genera un ReferenceError, miVar no es accesible fuera de la función.
 ```
 
-Besides, *var* declared variables are moved to the top of the scope at execution. This is what we call [var hoisting](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting).
-
-This portion of code:
+Además, las variables declaradas con *var* se mueven al principio del ámbito en la ejecución. Esto es lo que llamamos [hoisting de var](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/var#var_hoisting).
+Esta porción de código:
 
 ```js
-console.log(myVar) // undefined -- no error raised
+console.log(myVar) // undefined -- no se genera un error
 var myVar = 2;
 ```
 
-is understood at execution like:
+se entiende en la ejecución como:
 
 ```js
 var myVar;
-console.log(myVar) // undefined -- no error raised
+console.log(myVar) // undefined -- no se genera un error
 myVar = 2;
 ```
 
 ##### let
 
-```var``` and ```let ``` are about the same, but ```let``` declared variables
+```var``` y ```let``` son casi lo mismo, pero las variables declaradas con ```let```
 
-- are *block scoped*
-- are **not** accessible before they are assigned
-- can't be re-declared in the same scope
+- tienen *ámbito de bloque*
+- **no** son accesibles antes de que se les asigne un valor
+- no se pueden re-declarar en el mismo ámbito
 
-Let's see the impact of block-scoping taking our previous example:
+Veamos el impacto del ámbito de bloque en nuestro ejemplo anterior:
 
 ```javascript
-function myFunction() {
-  let myVar = "Nick";
+function miFuncion() {
+  let miVar = "Nick";
   if (true) {
-    let myVar = "John";
-    console.log(myVar); // "John"
-    // actually, myVar being block scoped, we just created a new variable myVar.
-    // this variable is not accessible outside this block and totally independent
-    // from the first myVar created !
+    let miVar = "John";
+    console.log(miVar); // "John"
+    // en realidad, como miVar tiene ámbito de bloque, hemos creado una nueva variable miVar.
+    // ¡Esta variable no es accesible fuera de este bloque y es completamente independiente
+    // de la primera miVar creada!
   }
-  console.log(myVar); // "Nick", see how the instructions in the if block DID NOT affect this value
+  console.log(miVar); // "Nick", observa cómo las instrucciones en el bloque if NO AFECTARON a este valor
 }
-console.log(myVar); // Throws a ReferenceError, myVar is not accessible outside the function.
+console.log(miVar); // Genera un ReferenceError, miVar no es accesible fuera de la función.
 ```
 
-<a name="tdz_sample"></a> Now, what it means for *let* (and *const*) variables for not being accessible before being assigned:
+<a name="tdz_sample"></a> Ahora, lo que significa para las variables *let* (y *const*) no ser accesibles antes de asignarles un valor:
 
 ```js
-console.log(myVar) // raises a ReferenceError !
-let myVar = 2;
+console.log(miVar) // ¡genera un ReferenceError!
+let miVar = 2;
 ```
 
-By contrast with *var* variables, if you try to read or write on a *let* or *const* variable before they are assigned an error will be raised. This phenomenon is often called [*Temporal dead zone*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_Dead_Zone_and_errors_with_let) or *TDZ*.
+A diferencia de las variables *var*, si intentas leer o escribir en una variable *let* o *const* antes de que se les asigne un valor, se generará un error. Este fenómeno se llama a menudo [*Zona Temporal Muerta*](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/let#Temporal_Dead_Zone_and_errors_with_let) o *TDZ*.
 
-> **Note:** Technically, *let* and *const* variables declarations are being hoisted too, but not their assignation. Since they're made so that they can't be used before assignation, it intuitively feels like there is no hoisting, but there is. Find out more on this [very detailed explanation here](http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified) if you want to know more.
+> **Nota:** Técnicamente, las declaraciones de variables *let* y *const* también se izan, pero no su asignación. Dado que están diseñadas para no poder usarse antes de la asignación, intuitivamente parece que no hay izado, pero sí lo hay. Si deseas saber más, puedes encontrar una [explicación muy detallada aquí](http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified).
 
-In addition, you can't re-declare a *let* variable:
+Además, no puedes re-declarar una variable *let*:
 
 ```js
-let myVar = 2;
-let myVar = 3; // Raises a SyntaxError
+let miVar = 2;
+let miVar = 3; // Genera un SyntaxError
 ```
 
 ##### const
 
-```const``` declared variables behave like *let* variables, but also they can't be reassigned.
+Las variables declaradas con ```const``` se comportan como las variables *let*, pero además no se pueden reasignar.
 
-To sum it up, *const* variables:
+En resumen, las variables *const*:
 
-- are *block scoped*
-- are not accessible before being assigned
-- can't be re-declared in the same scope
-- can't be reassigned
+- tienen *ámbito de bloque*
+- no son accesibles antes de ser asignadas
+- no se pueden re-declarar en el mismo ámbito
+- no se pueden reasignar
 
 ```js
-const myVar = "Nick";
-myVar = "John" // raises an error, reassignment is not allowed
+const miVar = "Nick";
+miVar = "John" // genera un error, no se permite la reasignación
 ```
 
 ```js
-const myVar = "Nick";
-const myVar = "John" // raises an error, re-declaration is not allowed
+const miVar = "Nick";
+const miVar = "John" // genera un error, no se permite la re-declaración
 ```
 
-<a name="const_mutable_sample"></a> But there is a subtlety : ```const``` variables are not [**immutable**](#mutation_def) ! Concretely, it means that *object* and *array* ```const``` declared variables **can** be mutated.
+<a name="const_mutable_sample"></a> Pero hay una sutileza: ¡las variables declaradas con ```const``` no son [**inmutables**](#mutation_def)! Concretamente, esto significa que las variables declaradas con ```const``` que son *objetos* y *arreglos* **pueden** mutar.
 
-For objects:
+Para objetos:
 ```js
-const person = {
-  name: 'Nick'
+const persona = {
+  nombre: 'Nick'
 };
-person.name = 'John' // this will work ! person variable is not completely reassigned, but mutated
-console.log(person.name) // "John"
-person = "Sandra" // raises an error, because reassignment is not allowed with const declared variables
+persona.nombre = 'John' // ¡esto funcionará! la variable persona no se reasigna por completo, sino que se muta
+console.log(persona.nombre) // "John"
+persona = "Sandra" // genera un error, porque no se permite la reasignación con variables declaradas con const
 ```
 
-For arrays:
+Para arreglos:
 ```js
-const person = [];
-person.push('John'); // this will work ! person variable is not completely reassigned, but mutated
-console.log(person[0]) // "John"
-person = ["Nick"] // raises an error, because reassignment is not allowed with const declared variables
+const persona = [];
+persona.push('John'); // ¡esto funcionará! la variable persona no se reasigna por completo, sino que se muta
+console.log(persona[0]) // "John"
+persona = ["Nick"] // genera un error, porque no se permite la reasignación con variables declaradas con const
 ```
 
 #### External resource
